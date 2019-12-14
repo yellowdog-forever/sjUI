@@ -1,17 +1,26 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <Toast></Toast> -->
+    <button @click="showToast()">点我</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import Toast from './../packages/toast/toast'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    // HelloWorld
+    // Toast
+  },
+  methods: {
+    showToast() {
+      this.$toast('我是一个ttttt')
+    }
   }
 }
 </script>
