@@ -1,22 +1,37 @@
 <template>
-  <div class="wrap">{{text}}</div>
+  <div class="wrap" :style="verticalTop" v-show="visible">{{text}}, {{visible}}</div>
 </template>
 
-<script>
+<script type="text/babel">
 export default {
-  name: 'SjToast'
+  name: 'SjToast',
+  data() {
+    return {
+      verticalOffset: 20,
+      duration: 3000,
+      visible: false
+    }
+  },
+  computed: {
+    verticalTop() {
+      return {'top': `${this.verticalOffset}px`}
+    }
+  },
+  mounted() {
+    this.startTime()
+  },
+  methods: {
+    startTime() {
+      setTimeout(() => {
+        this.visible = false
+      }, this.duration)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
   .wrap{
     position: fixed;
-    left: 50%;
-    top:50%;
-    background: rgba(0,0,0,.35);
-    padding: 10px;
-    border-radius: 5px;
-    transform: translate(-50%,-50%);
-    color: $color-danger;
   }
 </style>
