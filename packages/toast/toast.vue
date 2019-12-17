@@ -2,7 +2,13 @@
   <div class="wrap">{{text}}</div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  name: 'SjToast'
+}
+</script>
+
+<style lang="scss">
   .wrap{
     position: fixed;
     left: 50%;
@@ -11,6 +17,6 @@
     padding: 10px;
     border-radius: 5px;
     transform: translate(-50%,-50%);
-    color:#fff;
+    color: $color-danger;
   }
 </style>

@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     showToast() {
-      this.$toast('我是一个ttttt')
+      this.$toast('ahaha')
     }
   }
 }

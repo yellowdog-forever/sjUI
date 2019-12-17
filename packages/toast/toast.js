@@ -1,36 +1,49 @@
-import vue from 'vue'
-
 import toastComponent from './toast.vue'
-
+// import vue from "vue";
 // 返回一个 扩展实例构造器
 // const ToastConstructor = vue.extend(require('./toast.vue'))
-const ToastConstructor = vue.extend(toastComponent)
-const toastDom = null
-// 定义弹出组件的函数 接收2个参数, 要显示的文本 和 显示时间
-function showToast(text, duration = 2000) {
-  // 实例化一个 toast.vue
-  if (!toastDom) {
-    const toastDom = new ToastConstructor({
-      el: document.createElement('div'),
-      data() {
-        return {
-          text:text,
-          show:true
-        }
-      }
-    })
-    // 把 实例化的 toast.vue 添加到 body 里
-    document.body.appendChild(toastDom.$el)
+let instance = null
+let instances = []
+let ToastConstructor = null
+const ToastPlugin = {}
+let isSingle = true
+
+ToastPlugin.install = function(vue, options) {
+  isSingle = options.isSingle
+  vue.prototype.$toast = Toast
+  ToastConstructor = vue.extend(toastComponent)
+}
+
+let Toast = function (options) {
+  if(typeof options === 'string') {
+    options = {
+      text: options
+    }
   }
-  // 过了 duration 时间后隐藏
-  setTimeout(() => {toastDom.show = false} ,duration)
+  if (isSingle) {
+    if(!instance) {
+      instance = new ToastConstructor({
+        el: document.createElement('div'),
+        data: options
+      })
+      document.body.appendChild(instance.$el)
+    } else {
+      for(let i in options) {
+        instance.$data[i] = options[i]
+      }
+    }
+  } else {
+    instance = new ToastConstructor({
+      el: document.createElement('div'),
+      data: options
+    })
+    document.body.appendChild(instance.$el)
+    instances.push(instance)
+    console.log(instances)
+  }
 }
 
-// 注册为全局组件的函数
-function registryToast() {
-  // 将组件注册到 vue 的 原型链里去,
-  // 这样就可以在所有 vue 的实例里面使用 this.$toast()
-  vue.prototype.$toast = showToast
+Toast.close = function () {
+  
 }
-
-export default registryToast
+export default ToastPlugin
