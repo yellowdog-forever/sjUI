@@ -17,6 +17,7 @@ export default {
     // HelloWorld
     // Toast
   },
+  mounted() {},
   methods: {
     showToast() {
       this.$toast({text: '这是一个消息', offest: 200})

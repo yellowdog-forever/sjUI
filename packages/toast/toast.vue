@@ -1,5 +1,7 @@
 <template>
-  <div class="wrap" :style="verticalTop" v-show="visible">{{text}}, {{visible}}</div>
+  <div>
+    <div class="wrap" :style="verticalTop" v-show="visible">{{text}}, {{visible}}</div>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -24,8 +26,18 @@ export default {
     startTime() {
       setTimeout(() => {
         this.visible = false
+        this.close()
       }, this.duration)
-    }
+    },
+    close() {
+      console.log('++++++this close in vue file')
+      this.$destroy(true)
+      this.$el.parentNode.removeChild(this.$el);
+    },
+
+    // handleAfterLeave() {
+    //   this.$destroy(true);
+    // }
   }
 }
 </script>

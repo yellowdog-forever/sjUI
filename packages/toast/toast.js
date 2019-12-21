@@ -20,6 +20,11 @@ let Toast = function (options) {
       text: options
     }
   }
+  // let userClose = options.onclose
+  options.onclose = function() {
+    Toast.close()
+  }
+  // options.onclose = Toast.close(userClose)
   if (isSingle) {
     if(!instance) {
       instance = new ToastConstructor({
@@ -49,7 +54,8 @@ let Toast = function (options) {
   }
 }
 
-Toast.close = function () {
-  
+Toast.close = function() {
+  console.log('ssss this close in js file')
 }
+
 export default ToastPlugin
