@@ -18,6 +18,7 @@ export default {
     // Toast
   },
   mounted() {
+    console.log('git checkout 版本号  文件路径')
   },
   methods: {
     showToast() {
