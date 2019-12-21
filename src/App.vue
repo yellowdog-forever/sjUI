@@ -18,6 +18,7 @@ export default {
     // Toast
   },
   mounted() {
+    console.log('this is used to test git reset -mixed')
   },
   methods: {
     showToast() {
