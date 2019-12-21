@@ -17,7 +17,9 @@ export default {
     // HelloWorld
     // Toast
   },
-  mounted() {},
+  mounted() {
+    console.log('作为单个文件回滚的标志')
+  },
   methods: {
     showToast() {
       this.$toast({text: '这是一个消息', offest: 200})
