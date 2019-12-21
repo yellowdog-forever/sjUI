@@ -7,6 +7,8 @@ Vue.config.productionTip = false
 import Toast from './../packages/toast/toast'
 Vue.use(Toast, {isSingle: false})
 
+console.log('reset')
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
