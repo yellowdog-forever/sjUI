@@ -18,7 +18,6 @@ export default {
     // Toast
   },
   mounted() {
-    console.log('git reset -mixed')
   },
   methods: {
     showToast() {
