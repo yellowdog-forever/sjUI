@@ -7,8 +7,6 @@
   </div>
 </template>
 
-
-
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import Toast from './../packages/toast/toast'
