@@ -19,6 +19,7 @@ export default {
   },
   mounted() {
     console.log('git checkout 版本号  文件路径')
+    console.log('this is used to test')
   },
   methods: {
     showToast() {
