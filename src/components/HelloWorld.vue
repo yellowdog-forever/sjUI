@@ -37,6 +37,7 @@ export default {
     msg: String
   },
   mounted() {
+    console.log("first commit")
     console.log("second commit")
   }
 }
