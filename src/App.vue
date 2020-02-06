@@ -18,6 +18,8 @@ export default {
     // Toast
   },
   mounted() {
+    console.log(1)
+    console.log(2)
   },
   methods: {
     showToast() {
